@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Lenovo/OneDrive/Desktop/amity/Internship/Project/mlruns/0/models/m-e455c9e40507434388977ccaaab578f4/artifacts
+creation_timestamp: 1755704770773
+experiment_id: '0'
+last_updated_timestamp: 1755704785873
+model_id: m-e455c9e40507434388977ccaaab578f4
+model_type: null
+name: model
+source_run_id: 6fe6be817ad04b56bad1e30e0363271f
+status: 2
+status_message: null
