@@ -1,4 +1,9 @@
-# 🛡️ GuardNet: Phishing URL Detection 🎣
+<p align="center">
+  <img src="assets/logo.jpg" alt="DarkTraceX Logo" width="200"/>
+</p>
+
+# DarkTraceX: Phishing URL Detection
+
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green?logo=fastapi)
@@ -134,7 +139,9 @@ python main.py
 ## 📊 Example Dashboard
 
 ![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview.png)
-*(Shows ML metrics, model summary, and prediction results.)*
+![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview1.png)
+![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview2.png)
+
 
 ---
 
