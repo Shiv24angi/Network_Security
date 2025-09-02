@@ -1,0 +1,6 @@
+[ 2025-09-01 19:36:56,627 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-09-01 19:36:56,636 ] 107 dagshub - INFO - Accessing as Shiv24angi
+[ 2025-09-01 19:36:57,392 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Shiv24angi/Network_Security "HTTP/1.1 200 OK"
+[ 2025-09-01 19:36:58,142 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-09-01 19:36:58,147 ] 107 dagshub - INFO - Initialized MLflow to track repo "Shiv24angi/Network_Security"
+[ 2025-09-01 19:36:58,150 ] 107 dagshub - INFO - Repository Shiv24angi/Network_Security initialized!
