@@ -168,6 +168,6 @@ Contributions are welcome! 🎉
 ## 🧑‍💻 Author
 
 **Shivangi Sharma**
-📧 [LinkedIn](https://www.linkedin.com/) | 🌐 [GitHub](https://github.com/Shiv24angi)
+📧 [LinkedIn](https://www.linkedin.com/in/shivangi-sharma2405/) | 🌐 [GitHub](https://github.com/Shiv24angi)
 
 
