@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Phishing Detection</h1>
+        <p class="text-gray-600 mb-8">Upload a CSV file to predict if the URLs are legitimate or malicious.</p>
+        
+        <!-- The form for file upload -->
+        <form action="/predict" method="post" enctype="multipart/form-data" class="space-y-4">
+            <input type="file" name="file" accept=".csv" required class="w-full text-gray-700 bg-gray-200 border border-gray-300 rounded-md p-2 cursor-pointer">
+            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">
+                Predict
+            </button>
+        </form>
+
+        <p class="mt-6 text-sm text-gray-500">
+            For a full CSV output, please use the 
+            <a href="/docs" class="text-blue-600 hover:underline">API documentation</a> 
+            to use the `/predict_csv` endpoint.
+        </p>
+    </div>
+</body>
+</html>

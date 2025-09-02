@@ -1,6 +1,7 @@
 import sys
 import os
-
+from fastapi.responses import StreamingResponse
+import io
 import certifi
 ca = certifi.where()
 
@@ -23,7 +24,7 @@ import pandas as pd
 from networksecurity.utils.main_utils.utils import load_object
 
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
-
+from fastapi.templating import Jinja2Templates
 
 client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
 
@@ -44,12 +45,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from fastapi.templating import Jinja2Templates
-templates = Jinja2Templates(directory="./templates")
+# Set up Jinja2 templates to serve HTML files
+templates = Jinja2Templates(directory=".")
 
-@app.get("/", tags=["authentication"])
-async def index():
-    return RedirectResponse(url="/docs")
+@app.get("/", tags=["UI"])
+async def index(request: Request):
+    """
+    This endpoint serves the main user interface for file upload.
+    """
+    return templates.TemplateResponse("upload.html", {"request": request})
 
 @app.get("/train")
 async def train_route():
@@ -64,21 +68,49 @@ async def train_route():
 async def predict_route(request: Request,file: UploadFile = File(...)):
     try:
         df=pd.read_csv(file.file)
-        #print(df)
         preprocesor=load_object("final_model/preprocessor.pkl")
         final_model=load_object("final_model/model.pkl")
         network_model = NetworkModel(preprocessor=preprocesor,model=final_model)
-        print(df.iloc[0])
         y_pred = network_model.predict(df)
-        print(y_pred)
+
+        # Create a new DataFrame with a simplified view
         df['predicted_column'] = y_pred
-        print(df['predicted_column'])
-        #df['predicted_column'].replace(-1, 0)
-        #return df.to_json()
-        df.to_csv('prediction_output/output.csv')
-        table_html = df.to_html(classes='table table-striped')
-        #print(table_html)
+
+        # Select only a few key columns for display
+        display_df = df[['URL_Length', 'web_traffic', 'predicted_column']]
+
+        # You could also add a column with a human-readable prediction
+        display_df['prediction_label'] = display_df['predicted_column'].apply(
+            lambda x: 'Malicious (Phishing)' if x == 1.0 else 'Legitimate'
+        )
+
+        table_html = display_df.to_html(classes='table table-striped')
         return templates.TemplateResponse("table.html", {"request": request, "table": table_html})
+        
+    except Exception as e:
+        raise NetworkSecurityException(e,sys)
+    
+@app.post("/predict_csv")
+async def predict_csv_route(file: UploadFile = File(...)):
+    try:
+        df=pd.read_csv(file.file)
+        preprocesor=load_object("final_model/preprocessor.pkl")
+        final_model=load_object("final_model/model.pkl")
+        network_model = NetworkModel(preprocessor=preprocesor,model=final_model)
+        y_pred = network_model.predict(df)
+        df['predicted_column'] = y_pred
+
+        # Use an in-memory buffer to create the CSV file
+        stream = io.StringIO()
+        df.to_csv(stream, index=False)
+        
+        # Create a response that will trigger a download in the user's browser
+        response = StreamingResponse(
+            iter([stream.getvalue()]),
+            media_type="text/csv",
+            headers={"Content-Disposition": "attachment;filename=predicted_output.csv"}
+        )
+        return response
         
     except Exception as e:
             raise NetworkSecurityException(e,sys)

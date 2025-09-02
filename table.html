@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the table to make it more readable */
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        }
+        th {
+            background-color: #f8fafc; /* slate-50 */
+            color: #475569; /* slate-600 */
+            font-weight: 600;
+            white-space: nowrap; /* Prevent headers from wrapping */
+        }
+        tr:hover {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        /* Style for the prediction column to stand out */
+        td:last-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800 text-center">Prediction Results</h1>
+        <p class="text-gray-600 mb-8 text-center">Here are the predictions for your uploaded data.</p>
+        <div class="table-container rounded-md border border-gray-200">
+            {{ table | safe }}
+        </div>
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-block bg-blue-600 text-white font-bold py-2 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">
+                Back to Upload
+            </a>
+        </div>
+    </div>
+</body>
+</html>
