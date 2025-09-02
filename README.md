@@ -138,9 +138,10 @@ python main.py
 
 ## 📊 Example Dashboard
 
-![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview.png)
-![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview1.png)
-![Dashboard Preview](https://github.com/Shiv24angi/Network_Security/assets/dashboard-preview2.png)
+![Dashboard Preview](assets/dashboard-preview.png)
+![Dashboard Preview](assets/dashboard-preview1.png)
+![Dashboard Preview](assets/dashboard-preview2.png)
+
 
 
 ---
