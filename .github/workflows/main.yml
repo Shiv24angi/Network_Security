@@ -25,7 +25,7 @@ jobs:
       - name: Run unit tests
         run: echo "Running unit tests"
 
-  build-and-push-ecr-image:   # 👈 must align with 'integration'
+  build-and-push-ecr-image:
     name: Continuous Delivery
     needs: integration
     runs-on: ubuntu-latest
@@ -53,16 +53,17 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build, tag, and push image to Amazon ECR (multi-platform)
-  id: build-image
-  env:
-    ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
-    IMAGE_TAG: latest
-  run: |
-    docker buildx build --platform linux/amd64,linux/arm64 \
-      -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . \
-      --push
-    echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          IMAGE_TAG: latest
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64 \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . \
+            --push
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
   Continuous-Deployment:
     needs: build-and-push-ecr-image
     runs-on: self-hosted
