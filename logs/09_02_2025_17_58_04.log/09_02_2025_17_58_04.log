@@ -1,0 +1,14 @@
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 4
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 14
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 18
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 20
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 24
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 26
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 28
+[ 2025-09-02 17:58:06,595 ] 27 dotenv.main - WARNING - python-dotenv could not parse statement starting at line 30
+[ 2025-09-02 17:58:10,101 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-09-02 17:58:10,117 ] 107 dagshub - INFO - Accessing as Shiv24angi
+[ 2025-09-02 17:58:10,877 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Shiv24angi/Network_Security "HTTP/1.1 200 OK"
+[ 2025-09-02 17:58:11,485 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-09-02 17:58:11,488 ] 107 dagshub - INFO - Initialized MLflow to track repo "Shiv24angi/Network_Security"
+[ 2025-09-02 17:58:11,488 ] 107 dagshub - INFO - Repository Shiv24angi/Network_Security initialized!
